@@ -1,3 +1,6 @@
+import csv 
+import config
+
 class Vehiculo():
     
     def __init__(self, color, ruedas):
@@ -47,7 +50,6 @@ class Bicicleta(Vehiculo):
     def to_dict(self):
         return {"color":self.color, "ruedas":self.ruedas, "tipo":self.tipo}
 
-
 class Motocicleta(Bicicleta):
 
     def __init__(self, color, ruedas, tipo, velocidad, cilindrada):
@@ -61,12 +63,16 @@ class Motocicleta(Bicicleta):
     def to_dict(self):
         return {"color":self.color, "ruedas":self.ruedas, "tipo":self.tipo, "velocidad":self.velocidad, "cilindrada":self.cilindrada}
 
-Vehiculo_1 = Coche("rojo", 4, 240, 150)
-Vehiculo_2 = Camioneta("blanco", 4, 200, 100, 2000)
-Vehiculo_3 = Bicicleta("negro", 2, "urbana")
-Vehiculo_4 = Motocicleta("azul", 2, "urbana", 120, 80)
-
-lista_vehiculos = [Vehiculo_1, Vehiculo_2, Vehiculo_3, Vehiculo_4]
 
 class Vehiculos():
     lista = []
+    with open(config.DATABASE_PATH, newline='\n') as fichero:
+        reader = csv.reader()
+
+    @staticmethod
+    def catalogar(lista, numero_ruedas):
+        
+        return "se han encontrado {} vehículos con {} ruedas".format()
+        pass
+
+    

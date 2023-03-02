@@ -22,7 +22,7 @@ class Vehiculos:
         reader = csv.reader(fichero, delimiter=";")
         for color, ruedas in reader:
             vehiculo = Vehiculo(color, ruedas)
-            lista.append(Vehiculo)
+            lista.append(vehiculo)
     
     @staticmethod
     def buscar(id):

@@ -36,7 +36,7 @@ class Camioneta(Coche):
         return Coche.__str__(self) + ", carga máxima: {}kg".format(self.carga)
     
     def to_dict(self):
-        return {"color":self.color, "ruedas":self.ruedas, "velocidad":self.velocidad, "cilindrada":self.cilindrada, "carga":self.carga}
+        return {Vehiculos.to_dict(self)} #añadir las otras cosas
 
 class Bicicleta(Vehiculo):
 

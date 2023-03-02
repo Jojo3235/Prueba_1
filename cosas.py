@@ -20,6 +20,10 @@ class Coche(Vehiculo):
     def __str__(self):
         return Vehiculo.__str__(self) + ", {} km/h, {}cc".format(self.velocidad, self.cilindrada)
 
+    def to_dict(self):
+        return {"color":self.color, "ruedas":self.ruedas, "velocidad":self.velocidad, "cilindrada":self.cilindrada}
+
+
 class Camioneta(Coche):
     def __init__(self, color, ruedas, velocidad, cilindrada, carga):
         Coche.__init__(self, color, ruedas, velocidad, cilindrada)
@@ -28,6 +32,9 @@ class Camioneta(Coche):
     def __str__(self):
         return Coche.__str__(self) + ", carga máxima: {}kg".format(self.carga)
     
+    def to_dict(self):
+        return {"color":self.color, "ruedas":self.ruedas, "velocidad":self.velocidad, "cilindrada":self.cilindrada, "carga":self.carga}
+
 class Bicicleta(Vehiculo):
 
     def __init__(self,color, ruedas, tipo):
@@ -36,6 +43,9 @@ class Bicicleta(Vehiculo):
 
     def __str__(self):
         return Vehiculo.__str__(self) + ",tipo de bicicleta: {}".format(self.tipo)
+
+    def to_dict(self):
+        return {"color":self.color, "ruedas":self.ruedas, "tipo":self.tipo}
 
 
 class Motocicleta(Bicicleta):
@@ -48,6 +58,9 @@ class Motocicleta(Bicicleta):
     def __str__(self):
         return Bicicleta.__str__(self) + ", {} km/h, {}cc".format(self.velocidad, self.cilindrada)
     
+    def to_dict(self):
+        return {"color":self.color, "ruedas":self.ruedas, "tipo":self.tipo, "velocidad":self.velocidad, "cilindrada":self.cilindrada}
+
 Vehiculo_1 = Coche("rojo", 4, 240, 150)
 Vehiculo_2 = Camioneta("blanco", 4, 200, 100, 2000)
 Vehiculo_3 = Bicicleta("negro", 2, "urbana")

@@ -1,6 +1,7 @@
 import config
 import csv
 
+
 class Vehiculo():
     
     def __init__(self, color, ruedas):

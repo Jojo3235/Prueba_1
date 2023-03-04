@@ -11,8 +11,10 @@ class Coche(Vehiculo):
         return Vehiculo.__str__(self) + ", {} km/h, {}cc".format(self.velocidad, self.cilindrada)
     
     def to_dict(self):
-        return {"color":self.color, "ruedas":self.ruedas, "velocidad":self.velocidad, "cilindrada":self.cilindrada}
-
+        diccionario = Vehiculo.to_dict(self)
+        diccionario.update({"velocidad":self.velocidad, "cilindrada":self.cilindrada})
+        return diccionario
+    
 class Coches(Vehiculos):
     
     def __init__(self):

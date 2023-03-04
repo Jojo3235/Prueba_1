@@ -1,10 +1,21 @@
 import config
 import csv
 
+# Creacion de la clase de la que se heredaran cosas
+# Acceso a base de datos
+# Lectura de db
+# Modificacion en la db 
+# Busqueda en la db
+
+
 
 class Vehiculo():
     
+    id = 0
+
     def __init__(self, color, ruedas):
+        self.id = Vehiculo.id
+        Vehiculo.id += 1
         self.color = color
         self.ruedas = ruedas
 
@@ -29,7 +40,14 @@ class Vehiculos:
         for vehiculo in Vehiculos.lista:
             if vehiculo.id == id:
                 return vehiculo
-
+    @staticmethod
+    def detectar_numero_ruedas(numero_ruedas):
+        lista = []
+        for vehiculo in Vehiculos.lista:
+            if vehiculo.ruedas == numero_ruedas:
+                lista.append(vehiculo)
+        return lista
+    
     @staticmethod
     def eliminar(id):
         for indice, vehiculo in enumerate(Vehiculos.lista):

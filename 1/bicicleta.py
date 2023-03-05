@@ -1,8 +1,9 @@
 import sys
 sys.path.insert(0, "")
 
-from vehiculos import Vehiculo, Vehiculos
-
+from vehiculos import Vehiculo
+import config
+import csv
 
 permitidas = ["urbana", "deportiva"]
 
@@ -10,11 +11,11 @@ class Bicicleta(Vehiculo):
 
     def __init__(self, color, tipo):
         Vehiculo.__init__(self, color, 2)
-        if tipo.lower() in Bicicleta.permitidas:
+        if tipo.lower() in permitidas:
             self.tipo = tipo
     
     def __str__(self):
-        return Vehiculo.__str__(self) + ", de tipo {}".format(self.velocidad, self.cilindrada)
+        return Vehiculo.__str__(self) + ", de tipo {}".format(self.tipo)
     
     def to_dict(self):
         diccionario = Vehiculo.to_dict(self)
@@ -22,49 +23,59 @@ class Bicicleta(Vehiculo):
         return diccionario
     
 
-class Coches(Vehiculos):
+class Bicicletas():
     
-    def __init__(self):
-        Vehiculos.__init__(self)
-        self.tipo_vehiculo = "bicicleta"
+    lista = []
+    with open(config.DATABASE_PATH, newline='') as fichero:
+        reader = csv.reader(fichero, delimiter=';')
+        for id, color, ruedas, tipo in reader:
+            if ruedas == "2":
+                bicicleta = Bicicleta(color, tipo)
+                lista.append(bicicleta)
 
     @staticmethod
-    def nuevo(self):
-        color = input("Color: ")
-        ruedas = 4
-        velocidad = input("Velocidad: ")
-        cilindrada = input("Cilindrada: ")
-        self.vehiculos.append(Bicicleta(color, ruedas, velocidad, cilindrada))
+    def nuevo(color, tipo):
+        bicicleta = Bicicleta(color, tipo)
+        Bicicletas.lista.append(bicicleta)
+        Bicicletas.guardar()
+        return bicicleta
 
     @staticmethod
-    def listar(self):
-        for bicicleta in self.vehiculos:
-            print(bicicleta)
-
-    @staticmethod
-    def buscar(self):
-        color = input("Color: ")
-        for coche in self.vehiculos:
-            if coche.color == color:
-                print(coche)
-
-    @staticmethod
-    def modificar(self):
-        color = input("Color: ")
-        for bicicleta in self.vehiculos:
+    def buscar(id):
+        for bicicleta in Bicicletas.lista:
             if bicicleta.id == id:
-                print(bicicleta)
-                color = input("Nuevo color: ")
-                ruedas = 2
-                tipo = input("Nuevo tipo: ")
-                bicicleta.color = color
-                bicicleta.ruedas = ruedas
-                if tipo.lower() in permitidas:
-                    bicicleta.tipo = tipo
+                return bicicleta
 
     @staticmethod
-    def borrar(self):
-        id = input("id: ")
-        for coche in self.vehiculos:
-            if coche.id == id:
-                self.vehiculos.remove(coche)
+    def modificar(id, color, tipo):
+        for indice, bicicleta in enumerate(Bicicletas.lista):
+            if bicicleta.id == id:
+                Bicicletas.lista[indice].color = color
+                Bicicletas.lista[indice].tipo = tipo
+                Bicicletas.guardar()
+                return Bicicletas.lista[indice]
+
+    @staticmethod
+    def borrar(id):
+        for indice, bicicleta in enumerate(Bicicletas.lista):
+            if bicicleta.id == id:
+                bicicleta = Bicicletas.lista.pop(indice)
+                Bicicletas.guardar()
+                return bicicleta
+            
+    @staticmethod
+    def guardar():
+        with open(config.DATABASE_PATH, "w", newline='\n') as fichero:
+            writer = csv.writer(fichero, delimiter=";")
+            for bicicleta in Bicicletas.lista:
+                writer.writerow([bicicleta.id, bicicleta.color, bicicleta.ruedas, bicicleta.tipo])
+        
+        Bicicletas.lista.clear()
+        with open(config.DATABASE_PATH, newline='') as fichero:
+            reader = csv.reader(fichero, delimiter=';')
+            Bicicletas.lista.clear()
+            for id, color, ruedas, tipo in reader:
+                if ruedas == "2":
+                    bicicleta = Bicicleta(color, tipo)
+                    bicicleta.id = id
+                    Bicicletas.lista.append(bicicleta)

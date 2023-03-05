@@ -26,7 +26,7 @@ class Coches():
     with open(config.DATABASE_PATH, newline='') as fichero:
         reader = csv.reader(fichero, delimiter=';')
         for id, color, ruedas, velocidad, cilindrada in reader:
-            if ruedas == 4:
+            if ruedas == "4":
                 coche = Coche(color, velocidad, cilindrada)
                 lista.append(coche)
 
@@ -65,16 +65,14 @@ class Coches():
     def guardar():
         with open(config.DATABASE_PATH, "w", newline='\n') as fichero:
             writer = csv.writer(fichero, delimiter=";")
-            writer.writerow(["id", "color", "ruedas", "velocidad", "cilindrada"])
             for coche in Coches.lista:
                 writer.writerow([coche.id, coche.color, coche.ruedas, coche.velocidad, coche.cilindrada])
-
-
-def main():
-    Coches.nuevo("rojo", 210, 2100)
-    print("Coches: ")
-    for coche in Coches.lista:
-        print(coche)
-
-if __name__ == "__main__":
-    main()
+        
+        Coches.lista.clear()
+        with open(config.DATABASE_PATH, newline='') as fichero:
+            reader = csv.reader(fichero, delimiter=';')
+            for id, color, ruedas, velocidad, cilindrada in reader:
+                if ruedas == "4":
+                    coche = Coche(color, velocidad, cilindrada)
+                    coche.id = id
+                    Coches.lista.append(coche)

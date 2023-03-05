@@ -13,7 +13,7 @@ class Quad(Coche, Bicicleta):
         self.modelo = modelo
 
     def __str__(self):
-        return Bicicleta.__str__(self) + ", {} kg, modelo {}".format(self.carga, self.modelo)
+        return Bicicleta.__str__(self) + ", carga {} kg, modelo {}".format(self.carga, self.modelo)
     
     def to_dict(self):
         diccionario = Bicicleta.to_dict(self)

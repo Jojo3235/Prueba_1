@@ -64,10 +64,18 @@ class Vehiculos:
                 Vehiculos.lista[indice].ruedas = ruedas
                 Vehiculos.guardar()
                 return Vehiculos.lista[indice]
-            
+    
+    @staticmethod
+    def buscar_vehiculos_con_n_ruedas(numero_ruedas):
+        vehiculos_n_ruedas = Vehiculos.detectar_numero_ruedas(numero_ruedas)
+        for vehiculo in vehiculos_n_ruedas:
+            print("ID: {}, Color: {}, Ruedas: {}".format(vehiculo.id, vehiculo.color, vehiculo.ruedas))
+
     @staticmethod
     def guardar():
         with open(config.DATABASE_PATH, "w", newline="\n") as fichero:
             writer = csv.writer(fichero, delimiter=";")
             for vehiculo in Vehiculos.lista:
                 writer.writerow((vehiculo.ruedas, vehiculo.color))
+
+#Posible eliminacion para implementar la busqueda en las clases de tipo 1._

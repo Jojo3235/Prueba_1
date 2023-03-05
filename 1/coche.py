@@ -25,6 +25,7 @@ class Coches(Vehiculos):
         Vehiculos.__init__(self)
         self.tipo = "coche"
 
+    @staticmethod
     def nuevo(self):
         color = input("Color: ")
         ruedas = 4
@@ -32,16 +33,19 @@ class Coches(Vehiculos):
         cilindrada = input("Cilindrada: ")
         self.vehiculos.append(Coche(color, ruedas, velocidad, cilindrada))
 
+    @staticmethod
     def listar(self):
         for coche in self.vehiculos:
             print(coche)
 
+    @staticmethod
     def buscar(self):
         color = input("Color: ")
         for coche in self.vehiculos:
             if coche.color == color:
                 print(coche)
 
+    @staticmethod
     def modificar(self):
         color = input("Color: ")
         for coche in self.vehiculos:
@@ -56,8 +60,9 @@ class Coches(Vehiculos):
                 coche.velocidad = velocidad
                 coche.cilindrada = cilindrada
 
+    @staticmethod
     def borrar(self):
-        color = input("Color: ")
+        id = input("id: ")
         for coche in self.vehiculos:
-            if coche.color == color:
+            if coche.id == id:
                 self.vehiculos.remove(coche)

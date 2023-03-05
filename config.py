@@ -8,5 +8,7 @@ elif "bicicleta" in sys.argv[0]:
     DATABASE_PATH = "bicicletas.csv"
 elif "camioneta" in sys.argv[0]:
     DATABASE_PATH = "camionetas.csv"
-elif "Formula1s" in sys.argv[0]:
+elif "formula1" in sys.argv[0]:
     DATABASE_PATH = "Formula1s.csv"
+elif "quad" in sys.argv[0]:
+    DATABASE_PATH = "quads.csv"

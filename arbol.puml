@@ -1,0 +1,19 @@
+@startuml
+class Vehiculo {
+    -str velocidad
+}
+class Coche
+class Formula_1
+class Camioneta
+class Bici
+class Motocicleta
+class Quad
+
+Vehiculo <|-- Coche
+Coche <|-- Formula_1
+Coche <|-- Camioneta
+Coche <|-- Quad
+Vehiculo <|-- Bici
+Bici <|-- Motocicleta
+Bici <|-- Quad
+@enduml

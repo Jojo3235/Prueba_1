@@ -5,6 +5,7 @@ from vehiculos import Vehiculo
 import config
 import csv
 
+
 permitidas = ["urbana", "deportiva"]
 
 class Bicicleta(Vehiculo):
@@ -21,7 +22,6 @@ class Bicicleta(Vehiculo):
         diccionario = Vehiculo.to_dict(self)
         diccionario.update({"tipo":self.tipo})
         return diccionario
-    
 
 class Bicicletas():
     

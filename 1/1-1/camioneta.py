@@ -73,6 +73,6 @@ class Camionetas():
             reader = csv.reader(fichero, delimiter=';')
             for id, color, ruedas, velocidad, cilindrada, carga in reader:
                 if ruedas == "4":
-                    coche = Camioneta(color, velocidad, cilindrada, carga)
-                    coche.id = id
-                    Camionetas.lista.append(coche)
+                    camioneta = Camioneta(color, velocidad, cilindrada, carga)
+                    camioneta.id = id
+                    Camionetas.lista.append(camioneta)

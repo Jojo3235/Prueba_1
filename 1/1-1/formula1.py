@@ -74,6 +74,6 @@ class Formula1s():
             reader = csv.reader(fichero, delimiter=';')
             for id, color, ruedas, velocidad, cilindrada, escuderia in reader:
                 if ruedas == "4":
-                    coche = Formula1(color, velocidad, cilindrada, escuderia)
-                    coche.id = id
-                    Formula1s.lista.append(coche)
+                    formula1 = Formula1(color, velocidad, cilindrada, escuderia)
+                    formula1.id = id
+                    Formula1s.lista.append(formula1)

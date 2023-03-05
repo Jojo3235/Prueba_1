@@ -1,14 +1,18 @@
+import sys
+sys.path.insert(0, "")
+
 from vehiculos import Vehiculo, Vehiculos
+
 
 class Coche(Vehiculo):
 
-    def __init__(self, color, ruedas, velocidad, cilindrada):
-        Vehiculo.__init__(self, color, ruedas)
+    def __init__(self, color, velocidad, cilindrada):
+        Vehiculo.__init__(self, color, 4)
         self.velocidad = velocidad
         self.cilindrada = cilindrada
 
     def __str__(self):
-        return Vehiculo.__str__(self) + ", {} km/h, {}cc".format(self.velocidad, self.cilindrada)
+        return Vehiculo.__str__(self) + ", llega hasta {} km/h, tiene {}cc de potencia".format(self.velocidad, self.cilindrada)
     
     def to_dict(self):
         diccionario = Vehiculo.to_dict(self)

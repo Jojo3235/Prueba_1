@@ -20,7 +20,7 @@ class Vehiculo():
         self.ruedas = ruedas
 
     def __str__(self):
-        return "Color {}, {} ruedas".format(self.color, self.ruedas)
+        return "El vehículo es de color {}, tiene {} ruedas".format(self.color, self.ruedas)
 
     def to_dict(self):
         return {"color":self.color, "ruedas":self.ruedas}

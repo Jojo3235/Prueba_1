@@ -1,4 +1,8 @@
+import sys
+sys.path.insert(0, "1")
+
 from coche import Coche
+
 
 class Camioneta(Coche):
     

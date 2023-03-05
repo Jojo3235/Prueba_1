@@ -1,4 +1,2 @@
-rojo; 4
-blanco; 2
-negro; 4
-azul; 2
+id;color;ruedas;velocidad;cilindrada
+1;rojo;4;210;2100

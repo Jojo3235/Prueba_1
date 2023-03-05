@@ -1,8 +1,9 @@
 import sys
 sys.path.insert(0, "")
 
-from vehiculos import Vehiculo, Vehiculos
-
+from vehiculos import Vehiculo
+import csv
+import config
 
 class Coche(Vehiculo):
 
@@ -19,50 +20,61 @@ class Coche(Vehiculo):
         diccionario.update({"velocidad":self.velocidad, "cilindrada":self.cilindrada})
         return diccionario
     
-class Coches(Vehiculos):
+class Coches():
     
-    def __init__(self):
-        Vehiculos.__init__(self)
-        self.tipo = "coche"
+    lista = []
+    with open(config.DATABASE_PATH, newline='') as fichero:
+        reader = csv.reader(fichero, delimiter=';')
+        for id, color, ruedas, velocidad, cilindrada in reader:
+            if ruedas == 4:
+                coche = Coche(color, velocidad, cilindrada)
+                lista.append(coche)
 
     @staticmethod
-    def nuevo(self):
-        color = input("Color: ")
-        ruedas = 4
-        velocidad = input("Velocidad: ")
-        cilindrada = input("Cilindrada: ")
-        self.vehiculos.append(Coche(color, ruedas, velocidad, cilindrada))
+    def nuevo(color, velocidad, cilindrada):
+        coche = Coche(color, velocidad, cilindrada)
+        Coches.lista.append(coche)
+        Coches.guardar()
+        return coche
 
     @staticmethod
-    def listar(self):
-        for coche in self.vehiculos:
-            print(coche)
-
-    @staticmethod
-    def buscar(self):
-        color = input("Color: ")
-        for coche in self.vehiculos:
-            if coche.color == color:
-                print(coche)
-
-    @staticmethod
-    def modificar(self):
-        color = input("Color: ")
-        for coche in self.vehiculos:
-            if coche.color == color:
-                print(coche)
-                color = input("Nuevo color: ")
-                ruedas = input("Nuevas ruedas: ")
-                velocidad = input("Nueva velocidad: ")
-                cilindrada = input("Nueva cilindrada: ")
-                coche.color = color
-                coche.ruedas = ruedas
-                coche.velocidad = velocidad
-                coche.cilindrada = cilindrada
-
-    @staticmethod
-    def borrar(self):
-        id = input("id: ")
-        for coche in self.vehiculos:
+    def buscar(id):
+        for coche in Coches.lista:
             if coche.id == id:
-                self.vehiculos.remove(coche)
+                return coche
+
+    @staticmethod
+    def modificar(id, color, velocidad, cilindrada):
+        for indice, coche in enumerate(Coches.lista):
+            if coche.id == id:
+                Coches.lista[indice].color = color
+                Coches.lista[indice].velocidad = velocidad
+                Coches.lista[indice].cilindrada = cilindrada
+                Coches.guardar()
+                return Coches.lista[indice]
+
+    @staticmethod
+    def borrar(id):
+        for indice, coche in enumerate(Coches.lista):
+            if coche.id == id:
+                coche = Coches.lista.pop(indice)
+                Coches.guardar()
+                return coche
+            
+    @staticmethod
+    def guardar():
+        with open(config.DATABASE_PATH, "w", newline='\n') as fichero:
+            writer = csv.writer(fichero, delimiter=";")
+            writer.writerow(["id", "color", "ruedas", "velocidad", "cilindrada"])
+            for coche in Coches.lista:
+                writer.writerow([coche.id, coche.color, coche.ruedas, coche.velocidad, coche.cilindrada])
+
+
+def main():
+    Coches.nuevo("rojo", 210, 2100)
+    print("Coches: ")
+    for coche in Coches.lista:
+        print(coche)
+
+if __name__ == "__main__":
+    main()

@@ -24,54 +24,55 @@ class Camionetas():
     lista = []
     with open(config.DATABASE_PATH, newline='') as fichero:
         reader = csv.reader(fichero, delimiter=';')
-        for id, color, ruedas, velocidad, cilindrada in reader:
+        for id, color, ruedas, velocidad, cilindrada, carga in reader:
             if ruedas == "4":
-                camioneta = Camioneta(color, velocidad, cilindrada)
+                camioneta = Camioneta(color, velocidad, cilindrada, carga)
                 lista.append(camioneta)
 
     @staticmethod
-    def nuevo(color, velocidad, cilindrada):
-        coche = Coche(color, velocidad, cilindrada)
-        Camionetas.lista.append(coche)
+    def nuevo(color, velocidad, cilindrada, carga):
+        camioneta = Coche(color, velocidad, cilindrada, carga)
+        Camionetas.lista.append(camioneta)
         Camionetas.guardar()
-        return coche
+        return camioneta
 
     @staticmethod
     def buscar(id):
-        for coche in Camionetas.lista:
-            if coche.id == id:
-                return coche
+        for camioneta in Camionetas.lista:
+            if camioneta.id == id:
+                return camioneta
 
     @staticmethod
-    def modificar(id, color, velocidad, cilindrada):
-        for indice, coche in enumerate(Camionetas.lista):
-            if coche.id == id:
+    def modificar(id, color, velocidad, cilindrada, carga):
+        for indice, camioneta in enumerate(Camionetas.lista):
+            if camioneta.id == id:
                 Camionetas.lista[indice].color = color
                 Camionetas.lista[indice].velocidad = velocidad
                 Camionetas.lista[indice].cilindrada = cilindrada
+                Camionetas.lista[indice].carga = carga
                 Camionetas.guardar()
                 return Camionetas.lista[indice]
 
     @staticmethod
     def borrar(id):
-        for indice, coche in enumerate(Camionetas.lista):
-            if coche.id == id:
-                coche = Camionetas.lista.pop(indice)
+        for indice, camioneta in enumerate(Camionetas.lista):
+            if camioneta.id == id:
+                camioneta = Camionetas.lista.pop(indice)
                 Camionetas.guardar()
-                return coche
+                return camioneta
             
     @staticmethod
     def guardar():
         with open(config.DATABASE_PATH, "w", newline='\n') as fichero:
             writer = csv.writer(fichero, delimiter=";")
-            for coche in Camionetas.lista:
-                writer.writerow([coche.id, coche.color, coche.ruedas, coche.velocidad, coche.cilindrada])
+            for camioneta in Camionetas.lista:
+                writer.writerow([camioneta.id, camioneta.color, camioneta.ruedas, camioneta.velocidad, camioneta.cilindrada, camioneta.carga])
         
         Camionetas.lista.clear()
         with open(config.DATABASE_PATH, newline='') as fichero:
             reader = csv.reader(fichero, delimiter=';')
-            for id, color, ruedas, velocidad, cilindrada in reader:
+            for id, color, ruedas, velocidad, cilindrada, carga in reader:
                 if ruedas == "4":
-                    coche = Coche(color, velocidad, cilindrada)
+                    coche = Camioneta(color, velocidad, cilindrada, carga)
                     coche.id = id
                     Camionetas.lista.append(coche)

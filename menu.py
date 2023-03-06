@@ -1,11 +1,11 @@
 import os 
 import helpers as helpers
-import menu_bici
-import menu_camioneta
-import menu_coche
-import menu_f1
-import menu_moto
-import menu_quad
+import submenus.menu_bici as menu_bici
+import submenus.menu_camioneta as menu_camioneta
+import submenus.menu_coche as menu_coche
+import submenus.menu_f1 as menu_f1
+import submenus.menu_moto as menu_moto
+import submenus.menu_quad as menu_quad
 
 
 def iniciar():

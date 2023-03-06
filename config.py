@@ -3,7 +3,7 @@ import sys
 DATABASE_PATH = "vehiculos.csv"
 
 if "pytest" in sys.argv[0]:
-    DATABASE_PATH = "tests/***"
+    DATABASE_PATH = "tests/test_vehiculos.csv"
 elif "bicicleta" or "menu_bici" in sys.argv[0]:
     DATABASE_PATH = "bicicletas.csv"
 elif "camioneta" or "menu_camioneta" in sys.argv[0]:

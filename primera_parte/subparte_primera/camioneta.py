@@ -77,3 +77,19 @@ class Camionetas():
                     camioneta = Camioneta(color, velocidad, cilindrada, carga)
                     camioneta.id = id
                     Camionetas.lista.append(camioneta)
+
+#Esto funciona
+
+# def main():
+#     # Creamos algunas instancias de Camionetas
+#     camionetas_1 = Camioneta("rojo", 300, 600, 243)
+#     camionetas_2 = Camioneta("azul", 350, 700, 23)
+#     camionetas_3 = Camioneta("verde", 320, 650, 200)
+    
+#     # Las guardamos en la base de datos
+#     Camionetas.nuevo(camionetas_1.color, camionetas_1.velocidad, camionetas_1.cilindrada, camionetas_1.carga)
+#     Camionetas.nuevo(camionetas_2.color, camionetas_2.velocidad, camionetas_2.cilindrada, camionetas_2.carga)
+#     Camionetas.nuevo(camionetas_3.color, camionetas_3.velocidad, camionetas_3.cilindrada, camionetas_3.carga)
+    
+# if __name__ == '__main__':
+#     main()

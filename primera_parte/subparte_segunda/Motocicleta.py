@@ -24,7 +24,7 @@ class Motocicleta(Bicicleta):
 class Motocicletas:
 
     lista = []
-    with open(config.DATABASE_PATH, newline='') as fichero:
+    with open(config.DATABASE_PATH, 'r', newline='') as fichero:
         reader = csv.reader(fichero, delimiter=';')
         for id, color, ruedas, tipo, velocidad, cilindrada in reader:
             motocicleta = Motocicleta(color, tipo, velocidad, cilindrada)

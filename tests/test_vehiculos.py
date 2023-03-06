@@ -136,21 +136,21 @@ class TestVehiculos(unittest.TestCase):
 
     def test_f1(self):
 
-        f1 = f1cl.F1("rojo", 200, 2000)
-        assert f1.color == "rojo"
-        assert f1.ruedas == 4
-        assert f1.velocidad == 200
-        assert f1.cilindrada == 2000
-        assert str(f1) == "rojo, 4 ruedas, llega hasta 200 km/h, tiene 2000cc de potencia"
-        assert f1.to_dict() == {"color":"rojo", "ruedas":4, "velocidad":200, "cilindrada":2000}
-        f12 = f1cl.F1("verde", 300, 3000)
+        f_1 = f1.Formula1("rojo", 200, 2000)
+        assert f_1.color == "rojo"
+        assert f_1.ruedas == 4
+        assert f_1.velocidad == 200
+        assert f_1.cilindrada == 2000
+        assert str(f_1) == "rojo, 4 ruedas, llega hasta 200 km/h, tiene 2000cc de potencia"
+        assert f_1.to_dict() == {"color":"rojo", "ruedas":4, "velocidad":200, "cilindrada":2000}
+        f12 = f1.Formula1("verde", 300, 3000)
         assert f12.color == "verde"
         assert f12.ruedas == 4
         assert f12.velocidad == 300
         assert f12.cilindrada == 3000
         assert str(f12) == "verde, 4 ruedas, llega hasta 300 km/h, tiene 3000cc de potencia"
         assert f12.to_dict() == {"color":"verde", "ruedas":4, "velocidad":300, "cilindrada":3000}
-        f13 = f1cl.F1("azul", 400, 4000)
+        f13 = f1.F1("azul", 400, 4000)
         assert f13.color == "azul"
         assert f13.ruedas == 4
         assert f13.velocidad == 400

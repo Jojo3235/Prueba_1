@@ -14,7 +14,9 @@ class Bicicleta(Vehiculo):
         Vehiculo.__init__(self, color, 2)
         if tipo.lower() in permitidas:
             self.tipo = tipo
-    
+        else:
+            raise ValueError("El tipo no está permitido (urbana, deportiva)")
+        
     def __str__(self):
         return Vehiculo.__str__(self) + ", de tipo {}".format(self.tipo)
     

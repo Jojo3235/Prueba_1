@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, "1")
+sys.path.insert(0, "primera_parte")
 
 from coche import Coche
 import config

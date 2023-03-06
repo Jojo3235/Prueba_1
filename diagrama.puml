@@ -1,0 +1,55 @@
+@startuml
+class Vehiculo {
+    -str color
+    -int ruedas
+}
+class Coche {
+    -str color
+    -int ruedas
+    -int velocidad
+    -int cilindradas
+}
+class Formula_1 {
+    -str color
+    -int ruedas
+    -int velocidad
+    -int cilindradas
+    -str escuderia
+}
+class Camioneta {
+    -str color
+    -int ruedas
+    -int velocidad
+    -int cilindradas
+    -int carga
+}
+class Bici {
+    -str color
+    -int ruedas
+    -str tipo: urbana, deportiva
+}
+class Motocicleta {
+    -str color
+    -int ruedas
+    -str tipo: urbana, deportiva
+    -int velocidad
+    -int cilindradas
+}
+class Quad {
+    -str color
+    -int ruedas
+    -str tipo: urbana, deportiva
+    -int velocidad
+    -int cilindradas
+    -int carga
+    -str modelo
+}
+
+Vehiculo <|-- Coche
+Coche <|-- Formula_1
+Coche <|-- Camioneta
+Coche <|-- Quad
+Vehiculo <|-- Bici
+Bici <|-- Motocicleta
+Bici <|-- Quad
+@enduml

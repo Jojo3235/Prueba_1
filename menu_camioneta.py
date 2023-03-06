@@ -25,7 +25,8 @@ def menu_camioneta():
             cilindrada = helpers.introducir_numero("Introduzca la cilindrada de la camioneta")
             carga = helpers.introducir_numero("Introduzca la carga de la camioneta")
             cm.Camionetas.nuevo(color, velocidad, cilindrada, carga)
-        
+            print("Camioneta añadida con éxito.")
+
         elif opcion_4 == "4":
             print("Modificar camioneta...\n")
             id = helpers.leer_texto(1, 100, "Introduzca la ID de la camioneta")

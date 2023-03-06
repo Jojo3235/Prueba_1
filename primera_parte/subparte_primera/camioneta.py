@@ -7,8 +7,8 @@ import csv
 
 class Camioneta(Coche):
     
-    def __init__(self, color, ruedas, velocidad, cilindrada, carga):
-        Coche.__init__(self, color, ruedas, velocidad, cilindrada)
+    def __init__(self, color, velocidad, cilindrada, carga):
+        Coche.__init__(self, color, velocidad, cilindrada)
         self.carga = carga
 
     def __str__(self):
@@ -31,7 +31,7 @@ class Camionetas():
 
     @staticmethod
     def nuevo(color, velocidad, cilindrada, carga):
-        camioneta = Coche(color, velocidad, cilindrada, carga)
+        camioneta = Camioneta(color, velocidad, cilindrada, carga)
         Camionetas.lista.append(camioneta)
         Camionetas.guardar()
         return camioneta
@@ -71,6 +71,7 @@ class Camionetas():
         Camionetas.lista.clear()
         with open(config.DATABASE_PATH, newline='') as fichero:
             reader = csv.reader(fichero, delimiter=';')
+            Camionetas.lista.clear()
             for id, color, ruedas, velocidad, cilindrada, carga in reader:
                 if ruedas == "4":
                     camioneta = Camioneta(color, velocidad, cilindrada, carga)

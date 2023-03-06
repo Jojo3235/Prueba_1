@@ -71,6 +71,7 @@ class Coches():
         Coches.lista.clear()
         with open(config.DATABASE_PATH, newline='') as fichero:
             reader = csv.reader(fichero, delimiter=';')
+            Coches.lista.clear()
             for id, color, ruedas, velocidad, cilindrada in reader:
                 if ruedas == "4":
                     coche = Coche(color, velocidad, cilindrada)

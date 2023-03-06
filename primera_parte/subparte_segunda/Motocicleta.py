@@ -27,22 +27,21 @@ class Motocicletas:
     with open(config.DATABASE_PATH, newline='') as fichero:
         reader = csv.reader(fichero, delimiter=';')
         for id, color, ruedas, tipo, velocidad, cilindrada in reader:
-            if ruedas == "2":
-                motobicicleta = Motocicleta(color, tipo, velocidad, cilindrada)
-                lista.append(motobicicleta)
+            motocicleta = Motocicleta(color, tipo, velocidad, cilindrada)
+            lista.append(motocicleta)
 
     @staticmethod
     def nuevo(color, tipo, velocidad, cilindrada):
-        motobicicleta = Motocicleta(color, tipo, velocidad, cilindrada)
-        Motocicletas.lista.append(motobicicleta)
+        motocicleta = Motocicleta(color, tipo, velocidad, cilindrada)
+        Motocicletas.lista.append(motocicleta)
         Motocicletas.guardar()
-        return motobicicleta
+        return motocicleta
 
     @staticmethod
     def buscar(id):
-        for bicicleta in Motocicletas.lista:
-            if bicicleta.id == id:
-                return bicicleta
+        for motocicleta in Motocicletas.lista:
+            if motocicleta.id == id:
+                return motocicleta
 
     @staticmethod
     def modificar(id, color, tipo, velocidad, cilindrada):

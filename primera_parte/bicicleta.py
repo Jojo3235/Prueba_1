@@ -28,7 +28,7 @@ class Bicicleta(Vehiculo):
 class Bicicletas():
     
     lista = []
-    with open(config.DATABASE_PATH, 'r', newline='') as fichero:
+    with open(config.DATABASE_PATH, newline='') as fichero:
         reader = csv.reader(fichero, delimiter=';')
         for id, color, ruedas, tipo in reader:
             if ruedas == "2":

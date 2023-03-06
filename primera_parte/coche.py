@@ -68,13 +68,10 @@ class Coches:
             writer = csv.writer(fichero, delimiter=";")
             for coche in Coches.lista:
                 writer.writerow([coche.id, coche.color, coche.ruedas, coche.velocidad, coche.cilindrada])
-        
-        Coches.lista.clear()
-        with open(config.DATABASE_PATH, newline='') as fichero:
-            reader = csv.reader(fichero, delimiter=';')
-            Coches.lista.clear()
-            for id, color, ruedas, velocidad, cilindrada in reader:
-                if ruedas == "4":
-                    coche = Coche(color, velocidad, cilindrada)
-                    coche.id = id
-                    Coches.lista.append(coche)
+
+#Esto funciona
+def main():
+    Coches.modificar(1, "azul", 200, 2000)
+  
+if __name__ == '__main__':
+    main()

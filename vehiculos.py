@@ -1,6 +1,6 @@
 class Vehiculo():
     
-    id = 1
+    id = 0
 
     def __init__(self, color, ruedas):
         self.id = Vehiculo.id

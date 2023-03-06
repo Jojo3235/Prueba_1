@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, "")
+
 import helpers
 import primera_parte.subparte_segunda.motocicleta as mtcl
 

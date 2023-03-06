@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, "")
+
 import helpers
 import primera_parte.subparte_primera.formula1 as f1
 
@@ -13,7 +16,7 @@ def menu_formula1():
                 print(formula1)
         
         elif opcion_5 == "2":
-            print("Buscando coche...\n")
+            print("Buscando formula1...\n")
             id = helpers.leer_texto(1, 100, "Introduzca la ID del formula1")
             formula1 = f1.Formula1s.buscar(id)
             print(formula1) if formula1 else print("No se ha encontrado el formula1.")
@@ -28,7 +31,7 @@ def menu_formula1():
             print("Formula1 añadido con éxito.")
 
         elif opcion_5 == "4":
-            print("Modificar Formula1...\n")
+            print("Modificar formula1...\n")
             id = helpers.leer_texto(1, 100, "Introduzca la ID del formula1")
             formula1 = f1.Formula1s.buscar(id)
             if formula1:

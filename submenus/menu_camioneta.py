@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, "")
+
 import helpers
 import primera_parte.subparte_primera.camioneta as cm
 
@@ -13,7 +16,7 @@ def menu_camioneta():
                 print(camioneta)
         
         elif opcion_4 == "2":
-            print("Buscando coche...\n")
+            print("Buscando camioneta...\n")
             id = helpers.leer_texto(1, 100, "Introduzca la ID de la camioneta")
             camioneta = cm.Camionetas.buscar(id)
             print(camioneta) if camioneta else print("No se ha encontrado la camioneta.")

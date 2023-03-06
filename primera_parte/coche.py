@@ -20,7 +20,7 @@ class Coche(Vehiculo):
         diccionario.update({"velocidad":self.velocidad, "cilindrada":self.cilindrada})
         return diccionario
     
-class Coches():
+class Coches:
     
     lista = []
     with open(config.DATABASE_PATH, newline='') as fichero:
@@ -28,6 +28,7 @@ class Coches():
         for id, color, ruedas, velocidad, cilindrada in reader:
             if ruedas == "4":
                 coche = Coche(color, velocidad, cilindrada)
+                coche.id = id
                 lista.append(coche)
 
     @staticmethod

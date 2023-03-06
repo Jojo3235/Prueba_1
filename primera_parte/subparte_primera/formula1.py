@@ -8,8 +8,8 @@ import csv
 
 class Formula1(Coche):
 
-    def __init__(self, color, ruedas, velocidad, cilindrada, escuderia):
-        Coche.__init__(self, color, ruedas, velocidad, cilindrada)
+    def __init__(self, color, velocidad, cilindrada, escuderia):
+        Coche.__init__(self, color, velocidad, cilindrada)
         self.escuderia = escuderia
 
     def __str__(self):
@@ -39,9 +39,9 @@ class Formula1s():
 
     @staticmethod
     def buscar(id):
-        for Formula1 in Formula1s.lista:
-            if Formula1.id == id:
-                return Formula1
+        for formula1 in Formula1s.lista:
+            if formula1.id == id:
+                return formula1
 
     @staticmethod
     def modificar(id, color, velocidad, cilindrada, escuderia):
@@ -56,7 +56,7 @@ class Formula1s():
 
     @staticmethod
     def borrar(id):
-        for indice, Formula1 in enumerate(Formula1s.lista):
+        for indice, formula1 in enumerate(Formula1s.lista):
             if formula1.id == id:
                 formula1 = Formula1s.lista.pop(indice)
                 Formula1s.guardar()

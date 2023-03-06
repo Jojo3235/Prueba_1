@@ -24,7 +24,7 @@ def menu_moto():
             color = helpers.leer_texto(1, 100, "Introduzca el color de la bici").capitalize()
             velocidad = helpers.introducir_numero("Introduzca la velocidad máxima de la motocicleta")
             cilindrada = helpers.introducir_numero("Introduzca la cilindrada de la motocicleta")
-            tipo = helpers.leer_texto("Introduzca el tipo de bici (urbana, deportiva): ")
+            tipo = helpers.leer_texto(1, 100, "Introduzca el tipo de bici (urbana, deportiva): ")
             mtcl.Motocicletas.nuevo(color, tipo, velocidad, cilindrada)
             print("motocicleta añadida con éxito.")
 
@@ -34,7 +34,7 @@ def menu_moto():
             moto = mtcl.Motocicletas.buscar(id)
             if moto:
                 color = helpers.leer_texto(1, 100, "Introduzca el color de la motocicleta").capitalize()
-                tipo = helpers.introducir_numero("Introduzca el tipo de motocicleta (urbana, deportiva): ")
+                tipo = helpers.leer_texto(1, 100, "Introduzca el tipo de motocicleta (urbana, deportiva): ")
                 velocidad = helpers.introducir_numero("Introduzca la velocidad de la motocicleta: ")
                 cilindrada = helpers.introducir_numero("Introduzca la cilindrada de la motocicleta: ")
                 mtcl.Motocicletas.modificar(id, color, tipo, velocidad, cilindrada)

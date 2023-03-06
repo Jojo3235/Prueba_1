@@ -12,10 +12,7 @@ class Bicicleta(Vehiculo):
 
     def __init__(self, color, tipo):
         Vehiculo.__init__(self, color, 2)
-        if tipo.lower() in permitidas:
-            self.tipo = tipo
-        else:
-            raise ValueError("El tipo no está permitido (urbana, deportiva)")
+        self.tipo = tipo
         
     def __str__(self):
         return Vehiculo.__str__(self) + ", de tipo {}".format(self.tipo)
@@ -31,9 +28,8 @@ class Bicicletas():
     with open(config.DATABASE_PATH, newline='') as fichero:
         reader = csv.reader(fichero, delimiter=';')
         for id, color, ruedas, tipo in reader:
-            if ruedas == "2":
-                bicicleta = Bicicleta(color, tipo)
-                lista.append(bicicleta)
+            bicicleta = Bicicleta(color, tipo)
+            lista.append(bicicleta)
 
     @staticmethod
     def nuevo(color, tipo):

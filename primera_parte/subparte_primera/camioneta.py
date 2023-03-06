@@ -77,3 +77,4 @@ class Camionetas():
                     camioneta = Camioneta(color, velocidad, cilindrada, carga)
                     camioneta.id = id
                     Camionetas.lista.append(camioneta)
+

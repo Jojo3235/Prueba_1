@@ -43,8 +43,8 @@ def menu_camioneta():
         
         elif opcion_4 == "5":
             print("Borrar una camioneta...\n")
-            id = helpers.leer_texto(1, 100, "Introduzca la ID del camioneta")
-            print("Camioneta borrada con éxito.") if cm.Camionetas.borrar(id) else print("No se ha encontrado el camioneta.")
+            id = helpers.leer_texto(1, 100, "Introduzca la ID de la camioneta")
+            print("Camioneta borrada con éxito.") if cm.Camionetas.borrar(id) else print("No se ha encontrado la camioneta.")
         
         elif opcion_4 == "6":
             print("Saliendo...\n")

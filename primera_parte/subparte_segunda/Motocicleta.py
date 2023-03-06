@@ -32,8 +32,8 @@ class Motocicletas:
                 lista.append(motobicicleta)
 
     @staticmethod
-    def nuevo(color, tipo):
-        motobicicleta = Motocicleta(color, tipo)
+    def nuevo(color, tipo, velocidad, cilindrada):
+        motobicicleta = Motocicleta(color, tipo, velocidad, cilindrada)
         Motocicletas.lista.append(motobicicleta)
         Motocicletas.guardar()
         return motobicicleta
